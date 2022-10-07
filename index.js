@@ -25,7 +25,29 @@ window.addEventListener("keydown", (e) => {
       if (player.velocity.y === 0) player.velocity.y = -20;
 
       break;
+    // move player to the left
+    case "a":
+      player.velocity.x = -4;
+      break;
+    // move player to the right
+    case "d":
+      player.velocity.x = 4;
+      break;
+    case "s":
+      player.velocity.x = 0;
+      break;
   }
+});
 
-  //console.log(e);
+window.addEventListener("keyup", (e) => {
+  switch (e.key) {
+    // move player to the left
+    case "a":
+      player.velocity.x = 0;
+      break;
+    // move player to the right
+    case "d":
+      player.velocity.x = 0;
+      break;
+  }
 });
