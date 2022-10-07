@@ -18,3 +18,14 @@ function animate() {
 }
 
 animate();
+
+window.addEventListener("keydown", (e) => {
+  switch (e.key) {
+    case "w":
+      if (player.velocity.y === 0) player.velocity.y = -20;
+
+      break;
+  }
+
+  //console.log(e);
+});
