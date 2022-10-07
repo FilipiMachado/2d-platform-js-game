@@ -14,7 +14,7 @@ function animate() {
   player.draw();
   player.update();
 
-  console.log("animation running");
+  //console.log("animation running");
 }
 
 animate();
