@@ -1,6 +1,6 @@
 class Sprite {
   constructor({ position, imageSrc }) {
-    console.log(position);
+    //console.log(position);
     this.position = position;
     this.image = new Image();
     this.image.onload = () => {
