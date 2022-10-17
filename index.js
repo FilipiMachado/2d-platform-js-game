@@ -4,6 +4,14 @@ const c = canvas.getContext("2d");
 canvas.width = 64 * 16; // 1024px
 canvas.height = 64 * 9; // 576px
 
+class Sprite {
+  constructor({ position }) {
+    console.log(position);
+    this.position = position;
+    this.image = new Image();
+  }
+}
+
 const player = new Player();
 
 const keys = {
