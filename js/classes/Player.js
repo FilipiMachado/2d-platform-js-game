@@ -36,12 +36,24 @@ class Player {
       if (
         this.position.x <= collisionBlock.position.x + collisionBlock.width &&
         this.position.x + this.width >= collisionBlock.position.x &&
-        this.position.y + this.height >= collisionBlock.position.x &&
-        this.position.y <= collisionBlock.position.y + collision.height
+        this.position.y + this.height >= collisionBlock.position.y &&
+        this.position.y <= collisionBlock.position.y + collisionBlock.height
       ) {
+        // collision on x axis going to the left
+        if (this.velocity.x < -1) {
+          this.position.x =
+            collisionBlock.position.x + collisionBlock.width + 0.01;
+          break;
+        }
+
+        if (this.velocity.x > 1) {
+          this.position.x = collisionBlock.position.x - this.width - 0.01;
+          break;
+        }
       }
     }
 
+    // apply gravity
     this.position.y += this.velocity.y;
     this.sides.bottom = this.position.y + this.height;
 
