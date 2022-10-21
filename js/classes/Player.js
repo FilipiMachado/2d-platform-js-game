@@ -27,7 +27,18 @@ class Player {
 
   update() {
     this.position.x += this.velocity.x;
-    // check for horizontal collisions
+
+    this.checkForHorizontalCollisions();
+    this.applyGravity();
+    this.checkForVerticalCollisions();
+
+    /* // above bottom of canvas
+    if (this.sides.bottom + this.velocity.y < canvas.height) {
+    } else {
+      this.velocity.y = 0;
+    } */
+  }
+  checkForHorizontalCollisions() {
     for (let i = 0; i < this.collisionBlocks.length; i++) {
       const collisionBlock = this.collisionBlocks[i];
 
@@ -51,12 +62,8 @@ class Player {
         }
       }
     }
-
-    // apply gravity
-    this.velocity.y += this.gravity;
-    this.position.y += this.velocity.y;
-
-    // check for vertical collisions
+  }
+  checkForVerticalCollisions() {
     for (let i = 0; i < this.collisionBlocks.length; i++) {
       const collisionBlock = this.collisionBlocks[i];
 
@@ -81,11 +88,9 @@ class Player {
         }
       }
     }
-
-    /* // above bottom of canvas
-    if (this.sides.bottom + this.velocity.y < canvas.height) {
-    } else {
-      this.velocity.y = 0;
-    } */
+  }
+  applyGravity() {
+    this.velocity.y += this.gravity;
+    this.position.y += this.velocity.y;
   }
 }
