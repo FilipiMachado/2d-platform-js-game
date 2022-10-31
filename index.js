@@ -24,21 +24,25 @@ const player = new Player({
       frameRate: 11,
       frameBuffer: 2,
       loop: true,
+      imageSrc: "./img/king/idle.png",
     },
     idleLeft: {
       frameRate: 11,
       frameBuffer: 2,
       loop: true,
+      imageSrc: "./img/king/idleLeft.png",
     },
     runRight: {
       frameRate: 8,
       frameBuffer: 2,
       loop: true,
+      imageSrc: "./img/king/runRight.png",
     },
     runLeft: {
       frameRate: 8,
       frameBuffer: 2,
       loop: true,
+      imageSrc: "./img/king/runLeft.png",
     },
   },
 });
