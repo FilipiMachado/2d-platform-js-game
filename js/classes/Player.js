@@ -31,12 +31,12 @@ class Player extends Sprite {
 
     this.updateHitBox();
 
-    c.fillRect(
+    /* c.fillRect(
       this.hitbox.position.x,
       this.hitbox.position.y,
       this.hitbox.width,
       this.hitbox.height
-    );
+    ); */
     this.checkForVerticalCollisions();
 
     /* // above bottom of canvas
