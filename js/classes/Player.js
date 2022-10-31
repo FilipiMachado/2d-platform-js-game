@@ -24,17 +24,12 @@ class Player extends Sprite {
     /* c.fillRect(this.position.x, this.position.y, this.width, this.height); */
     this.position.x += this.velocity.x;
 
+    this.updateHitBox();
+
     this.checkForHorizontalCollisions();
     this.applyGravity();
 
-    this.hitbox = {
-      position: {
-        x: this.position.x + 55,
-        y: this.position.y + 34,
-      },
-      width: 50,
-      height: 53,
-    };
+    this.updateHitBox();
 
     c.fillRect(
       this.hitbox.position.x,
@@ -50,16 +45,32 @@ class Player extends Sprite {
       this.velocity.y = 0;
     } */
   }
+
+  updateHitBox() {
+    this.hitbox = {
+      position: {
+        x: this.position.x + 55,
+        y: this.position.y + 34,
+      },
+      width: 50,
+      height: 53,
+    };
+  }
+
   checkForHorizontalCollisions() {
     for (let i = 0; i < this.collisionBlocks.length; i++) {
       const collisionBlock = this.collisionBlocks[i];
 
       // if a collision exists
       if (
-        this.position.x <= collisionBlock.position.x + collisionBlock.width &&
-        this.position.x + this.width >= collisionBlock.position.x &&
-        this.position.y + this.height >= collisionBlock.position.y &&
-        this.position.y <= collisionBlock.position.y + collisionBlock.height
+        this.hitbox.position.x <=
+          collisionBlock.position.x + collisionBlock.width &&
+        this.hitbox.position.x + this.hitbox.width >=
+          collisionBlock.position.x &&
+        this.hitbox.position.y + this.hitbox.height >=
+          collisionBlock.position.y &&
+        this.hitbox.position.y <=
+          collisionBlock.position.y + collisionBlock.height
       ) {
         // collision on x axis going to the left
         if (this.velocity.x < 0) {
@@ -92,8 +103,9 @@ class Player extends Sprite {
       ) {
         if (this.velocity.y < 0) {
           this.velocity.y = 0;
+          const offset = this.hitbox.position.y - this.position.y;
           this.position.y =
-            collisionBlock.position.y + collisionBlock.height + 0.01;
+            collisionBlock.position.y + collisionBlock.height - offset + 0.01;
           break;
         }
 
